@@ -3,7 +3,7 @@ import FormInput from '../formInput/formInputComponent'
 
 import CustomButton from '../customButton/customButtomComponent'
 
-import  { signInWithGoogle } from '../../firebase/firebase.utils'
+import  {auth, signInWithGoogle } from '../../firebase/firebase.utils'
 import './signInStyles.scss'
 
 
@@ -16,10 +16,20 @@ class SignIn extends Component{
             password:''
         }
     }
-    handleSubmit = (event) =>{
+    handleSubmit = async (event) =>{
         event.preventDefault();
+ 
+        const { email, password} = this.state;
 
-        this.setState({email:'', password:''})
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({email:'', password:''});
+            
+        } catch (error) {
+            console.error(error)
+        }
+
+        
     }
     handleChange = (event) =>{
         const { value, name } = event.target;
