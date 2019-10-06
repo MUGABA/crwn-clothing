@@ -1,23 +1,24 @@
-import React from 'react';
+import React from "react";
 
-import './collectionItemStyles.scss';
+import CustomButton from "../customButton/customButtomComponent";
 
+import "./collectionItemStyles.scss";
 
-const CollectionItem = ({id, name, price , imageUrl}) => (
+const CollectionItem = ({ id, name, price, imageUrl }) => (
+  <div className="collecion-item">
+    <div
+      className="image"
+      style={{
+        backgroundImage: `url(${imageUrl})`
+      }}
+    />
 
-    <div className= 'collecion-item'>
-        <div className = 'image'
-        style = {{
-            backgroundImage:`url(${imageUrl})`
-        }}
-        />
-
-        <div className = 'collection-footer'>
-            <span className = 'name'>{ name }</span>
-            <span className = 'price'>{ price }</span>
-        </div>
+    <div className="collection-footer">
+      <span className="name">{name}</span>
+      <span className="price">{price}</span>
     </div>
-)
-
+    <CustomButton inverted>Add to cart</CustomButton>
+  </div>
+);
 
 export default CollectionItem;
