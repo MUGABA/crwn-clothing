@@ -11,6 +11,8 @@ import {
 // checkout page import
 import CheckoutItem from "../../components/checkoutItem/checkoutItemComponent";
 
+import StripeCheckoutButton from "../../components/stripe-button/stripe-buttonComponent";
+
 const CheckoutPage = ({ cartItems, total }) => (
   <div className="checkout-page">
     <div className="checkout-header">
@@ -36,6 +38,11 @@ const CheckoutPage = ({ cartItems, total }) => (
     <div className="total">
       <span>Total:${total}</span>
     </div>
+    <div className="testing-data">
+      *please use this info for payment testing 4242 4242 4242 4242 exp: 01/02
+      CW 123
+    </div>
+    <StripeCheckoutButton price={total} />
   </div>
 );
 const mapStateToProps = createStructuredSelector({
